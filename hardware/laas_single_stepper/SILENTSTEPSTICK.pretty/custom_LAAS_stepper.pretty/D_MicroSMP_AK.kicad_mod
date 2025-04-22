@@ -1,0 +1,218 @@
+(footprint "D_MicroSMP_AK"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "Diode MicroSMP (DO-219AD), large-pad cathode, https://www.vishay.com/docs/89020/mss1p3l.pdf")
+	(tags "Diode MicroSMP (DO-219AD)")
+	(property "Reference" "REF**"
+		(at 2.5 0 90)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "25bbccbc-aea5-48e4-8272-a46282bb5c68")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "MSS1P4-M3"
+		(at 0 1.65 180)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "c68158bf-3fcc-4bbf-8b48-5cd62fa5e83a")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 180)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "0012ae7d-e52d-4c40-b4fa-c5771a8b39cc")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" "Schottky diode"
+		(at 0 0 180)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "8e362c1a-b1da-43e1-aa23-4aed46b12412")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_line
+		(start -2.14 0.81)
+		(end 1.1 0.81)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "152b0571-f606-403b-a433-dfb3b8d750d0")
+	)
+	(fp_line
+		(start -2.14 -0.81)
+		(end 1.1 -0.81)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "be1f961a-7411-442f-b208-a8facec93f31")
+	)
+	(fp_line
+		(start -2.14 -0.81)
+		(end -2.14 0.81)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "6ed68e00-f2d9-4525-8e32-43bac376121b")
+	)
+	(fp_line
+		(start 1.67 -0.9)
+		(end 1.67 0.9)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "915faab9-6c4f-4e11-99a8-a1e5b7cf28b1")
+	)
+	(fp_line
+		(start -2.13 0.9)
+		(end 1.67 0.9)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "f3997736-c6f1-4b48-8e42-d53c91da48e7")
+	)
+	(fp_line
+		(start -2.13 -0.9)
+		(end 1.67 -0.9)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "24e917b3-cc24-4c26-b1dd-2e256b540ffc")
+	)
+	(fp_line
+		(start -2.13 -0.9)
+		(end -2.13 0.9)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "f11d5b68-254e-47af-b5f8-f64c1c498f16")
+	)
+	(fp_line
+		(start 0.9 0)
+		(end 0.5 0)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "7c2a6fc5-a146-4370-9c2c-1c54580a2d9f")
+	)
+	(fp_line
+		(start 0.2 0)
+		(end -0.9 0)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "c8c95167-8de8-4373-b824-b59cd0af0cf2")
+	)
+	(fp_line
+		(start 0.2 -0.2)
+		(end 0.2 0.2)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "05386b34-b4be-4b5d-86a9-1284c3831733")
+	)
+	(fp_rect
+		(start -1.1 -0.65)
+		(end 1.1 0.65)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "d2eda386-2dec-475a-8224-84bbe4b1cafd")
+	)
+	(fp_poly
+		(pts
+			(xy 0.5 0.2) (xy 0.2 0) (xy 0.5 -0.2)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "8421a79e-1a92-4506-b0a0-747526900a8e")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 2.5 0 90)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "80961776-b514-49c3-b53c-3b3713a16cee")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at -0.88 0 180)
+		(size 2 1.1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "2580c103-d688-4c47-b3f8-edeb82eeef55")
+	)
+	(pad "2" smd rect
+		(at 1.02 0 180)
+		(size 0.8 0.8)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "266a966f-8f11-4d75-9c4f-f59689d66c88")
+	)
+	(embedded_fonts no)
+	(model "${KICAD9_3DMODEL_DIR}/Diode_SMD.3dshapes/D_MicroSMP_AK.wrl"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)
