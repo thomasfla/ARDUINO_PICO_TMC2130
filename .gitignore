@@ -30,6 +30,10 @@ fp-info-cache
 *.xml
 *.csv
 
+#pcbway_production
+pcbway_production
 
 #Python Venv
 .venv
+
+

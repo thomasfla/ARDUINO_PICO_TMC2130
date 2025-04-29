@@ -209,7 +209,6 @@ void loop() {
             for (int i = 0; i < 3; ++i) {
                 if (axisConfigs[i].name == axis) {
                     axis_setMotion(i, pos, vel, acc);
-                    Serial.println(i);
                     break;
                 }
             }
