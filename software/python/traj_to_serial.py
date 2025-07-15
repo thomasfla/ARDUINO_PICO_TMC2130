@@ -2,6 +2,11 @@
 import serial
 import time
 
+def gotoX(ser, x, vel=4000, acc=20000):
+	message = f"X {x} {vel} {acc}\n"
+	ser.write(message.encode('utf-8'))
+
+
 def main():
     # Update the port name and baud rate for your setup.
     port = "/dev/ttyACM0"  
@@ -14,18 +19,13 @@ def main():
         return
 
 
-    while True:
+    for i in range (10):
+        gotoX(ser,5000)
         
-        message = f"X 100000 4000 20000\n"
-        ser.write(message.encode('utf-8'))
-        print("Sent:", message.strip())
-
-        time.sleep(10)
-        message = f"X 0 4000 20000\n"
-        ser.write(message.encode('utf-8'))
-        print("Sent:", message.strip())
-            
-        time.sleep(10)
+        time.sleep(2)
+        gotoX(ser,0)
+        time.sleep(2)
+        print (i)
 
 
 if __name__ == "__main__":

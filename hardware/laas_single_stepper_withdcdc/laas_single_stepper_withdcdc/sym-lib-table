@@ -1,0 +1,5 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "pico")(type "KiCad")(uri "/home/tflayols/kicad/KiCad-RP-Pico-main/RP-Pico Libraries/MCU_RaspberryPi_and_Boards.kicad_sym")(options "")(descr ""))
+  (lib (name "SILENTSTEPSTICK")(type "KiCad")(uri "${KIPRJMOD}/SILENTSTEPSTICK.kicad_sym")(options "")(descr ""))
+)

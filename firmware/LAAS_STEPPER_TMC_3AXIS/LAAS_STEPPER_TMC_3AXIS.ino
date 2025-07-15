@@ -36,8 +36,8 @@ using namespace TMC2130_n;
 
 #define Z_MIN_POS_STEPS 0
 #define Z_MAX_POS_STEPS (72000)
-#define Z_MAX_VEL_STEPS (10000)
-#define Z_MAX_ACC_STEPS (200000)
+#define Z_MAX_VEL_STEPS (5000)
+#define Z_MAX_ACC_STEPS (100000)
 
 // Axis-specific pin and parameter defines
 // X axis
@@ -198,7 +198,43 @@ void setup() {
 
     axis_init(2);
     axis_home(2,1,72000);
+    //demo();
 }
+
+void demo()
+{
+
+    int z = 20000;
+    int i=0;
+    axes[0].stepper->runToNewPosition(15000);
+    axes[1].stepper->runToNewPosition(1000);
+    axes[2].stepper->runToNewPosition(z);
+    while(1)
+    {
+        axes[0].stepper->runToNewPosition(15000);
+        for(i=0;i<5;i++)
+        {
+            axes[1].stepper->runToNewPosition(1000);
+            axes[2].stepper->runToNewPosition(z-1000);
+            axes[2].stepper->runToNewPosition(z);
+            axes[1].stepper->runToNewPosition(2000);
+            axes[2].stepper->runToNewPosition(z-1000);
+            axes[2].stepper->runToNewPosition(z);
+        }
+        axes[0].stepper->runToNewPosition(1000);
+        for(i=0;i<2;i++)
+        {
+            axes[1].stepper->runToNewPosition(1000);
+            axes[2].stepper->runToNewPosition(z-1000);
+            axes[2].stepper->runToNewPosition(z);
+            axes[1].stepper->runToNewPosition(5000);
+            axes[2].stepper->runToNewPosition(z-1000);
+            axes[2].stepper->runToNewPosition(z);
+        }
+    } 
+}
+
+
 
 void loop() {
     // Command handling
