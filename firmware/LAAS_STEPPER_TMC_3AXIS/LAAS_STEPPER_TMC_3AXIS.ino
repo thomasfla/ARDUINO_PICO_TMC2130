@@ -39,6 +39,9 @@ using namespace TMC2130_n;
 #define Z_MAX_VEL_STEPS (5000)
 #define Z_MAX_ACC_STEPS (100000)
 
+
+
+/*
 // Axis-specific pin and parameter defines
 // X axis
 #define X_CS_PIN      17
@@ -69,6 +72,41 @@ using namespace TMC2130_n;
 #define Z_MICROSTEPS   16
 #define Z_CURRENT_MA 500
 #define Z_STALL_VALUE 13
+*/
+
+
+// Axis-specific pin and parameter defines
+// X axis
+#define X_CS_PIN      14
+#define X_EN_PIN       7
+#define X_DIR_PIN      8
+#define X_STEP_PIN     9
+#define X_DIAG0_PIN    6 //2
+#define X_MICROSTEPS  16
+#define X_CURRENT_MA 500
+#define X_STALL_VALUE  3
+
+// Y axis
+#define Y_CS_PIN       15
+#define Y_EN_PIN       11
+#define Y_DIR_PIN      12
+#define Y_STEP_PIN     13
+#define Y_DIAG0_PIN    10
+#define Y_MICROSTEPS   16
+#define Y_CURRENT_MA 500
+#define Y_STALL_VALUE  3
+
+// Z axis
+#define Z_CS_PIN      17
+#define Z_EN_PIN      22
+#define Z_DIR_PIN     21
+#define Z_STEP_PIN    20
+#define Z_DIAG0_PIN    26
+#define Z_MICROSTEPS   16
+#define Z_CURRENT_MA 500
+#define Z_STALL_VALUE 13
+
+#define UV_EN_PIN 28
 
 // Axis configuration struct
 typedef struct {
@@ -140,7 +178,7 @@ void axis_init(int idx) {
     AccelStepper *stp = (idx == 0 ? &stepperX : idx == 1 ? &stepperY : &stepperZ);
     axes[idx].stepper = stp;
     stp->setEnablePin(cfg->en);
-    stp->setPinsInverted(false, false, true);
+    stp->setPinsInverted(true, false, true);
     stp->enableOutputs();
     stp->setMaxSpeed(cfg->max_vel);
     stp->setAcceleration(cfg->max_acc);
@@ -186,18 +224,23 @@ void axis_setMotion(int idx, int32_t pos, uint32_t vel, uint32_t acc) {
 }
 
 void setup() {
+    analogWriteFreq(1000);
     Serial.begin(9600);
     while (!Serial);
+
+    pinMode(UV_EN_PIN,OUTPUT);
+    digitalWrite(UV_EN_PIN, 1);
+
     SPI.begin();
 
     axis_init(0);
-    axis_home(0);
+    axis_home(0,1);
 
     axis_init(1);
-    axis_home(1);
+    axis_home(1,1);
 
     axis_init(2);
-    axis_home(2,1,72000);
+    axis_home(2,0,72000);
     //demo();
 }
 
@@ -240,16 +283,25 @@ void loop() {
     // Command handling
     if (Serial.available()) {
         String cmd = Serial.readStringUntil('\n');
-        char axis; uint32_t pos, vel, acc;
-        if (sscanf(cmd.c_str(), "%c %lu %lu %lu", &axis, &pos, &vel, &acc) == 4) {
+        char axis; uint32_t arg1, arg2, arg3;
+        if (sscanf(cmd.c_str(), "%c %lu %lu %lu", &axis, &arg1, &arg2, &arg3) == 4) {
             for (int i = 0; i < 3; ++i) {
                 if (axisConfigs[i].name == axis) {
-                    axis_setMotion(i, pos, vel, acc);
+                    axis_setMotion(i, arg1, arg2, arg3);
                     break;
                 }
             }
         }
+        else if((sscanf(cmd.c_str(), "%c %lu", &axis, &arg1) == 2)){
+            if(axis=='U')
+            {
+                analogWrite(UV_EN_PIN,arg1) ;
+                //if(arg1==1) analogWrite(UV_EN_PIN,arg1) ;//digitalWrite(UV_EN_PIN, 0);
+                //if(arg1==0) ;//digitalWrite(UV_EN_PIN, 1);
+            }            
+        }
     }
+
 
     // Update steppers directly
     axes[0].stepper->run();

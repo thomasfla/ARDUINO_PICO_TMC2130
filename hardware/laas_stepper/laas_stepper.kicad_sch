@@ -8940,7 +8940,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "C_Polarized"
+		(property "Value" "150uF"
 			(at 179.07 95.6309 0)
 			(effects
 				(font
@@ -8968,6 +8968,15 @@
 			)
 		)
 		(property "Description" "Polarized capacitor"
+			(at 175.26 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ref" "35ZLG150MEFC8X11.5"
 			(at 175.26 95.25 0)
 			(effects
 				(font
